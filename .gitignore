@@ -1,0 +1,18 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.DS_Store
+
+# CommonCrawl shards: ~5.5 GB, fetched by scripts/download_data.sh
+*.warc
+*.wet
+*.wat
+!tests/fixtures/*.warc
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out

@@ -1,0 +1,17 @@
+This repository grew out of an assignment for INFO7375 (Semantic Intelligence in
+Large Language Models) at Northeastern University.
+
+Provided by the course, not written by me:
+
+  warc_io.py              WARC/WET readers (originally utils.py)
+  scripts/download_data.sh
+  data/bad_word_list.txt  403 entries
+  data/topic_dataset.json 219 single-sentence documents
+
+Everything else -- the extraction, masking, filtering and deduplication logic,
+the HuggingFace dataset builder, the census script, the test suite and the
+documentation -- is my own work.
+
+The corpus itself is a single WARC shard of the CC-MAIN-2018-17 Common Crawl
+dump, distributed by the Common Crawl Foundation under their Terms of Use:
+https://commoncrawl.org/terms-of-use
