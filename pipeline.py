@@ -67,3 +67,17 @@ def html_to_text(html: str) -> str:
     ]
     body = _BLANK_LINES_RE.sub("\n\n", "\n".join(lines)).strip()
     return f"{title}\n{body}".strip() if title else body
+
+
+def replace_pii(text: str) -> str:
+    """Masks personally identifiable information (PII) from text with the specified masking formats.
+    Args:
+        text (str): Candidate text.
+    Returns:
+        str: Text with PII obfuscated.
+    """
+    def mask_phone(match: re.Match) -> str:
+        return "+1" + re.sub(r"\d", "X", match.group(0)[2:])
+
+    text = _SSN_RE.sub("XXX-XX-XXXX", text)
+    return _PHONE_RE.sub(mask_phone, text)
