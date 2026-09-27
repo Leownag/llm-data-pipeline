@@ -81,3 +81,49 @@ def replace_pii(text: str) -> str:
 
     text = _SSN_RE.sub("XXX-XX-XXXX", text)
     return _PHONE_RE.sub(mask_phone, text)
+
+
+def clean_text(text: str) -> str:
+    """Removes substrings identified as low-quality according to alphanumeric, whitespace and valid document checks.
+    Args:
+        text (str): document to process.
+    Returns:
+        str: cleaned document
+    """
+    kept = []
+    for paragraph in text.split("\n"):
+        if _LONG_RUN_RE.search(paragraph):
+            continue
+        if not any(char in _PUNCT for char in paragraph):
+            continue
+        kept.append(paragraph)
+    return "\n".join(kept)
+
+
+def heuristic_quality_filter(text: str) -> bool:
+    """Rejects documents based on the presence of bad words and punctuation.
+    Args:
+        text (str): document to check
+    Returns:
+        bool: returns True if the document passes the filters, False otherwise.
+    """
+    global _BAD_WORDS
+    if _BAD_WORDS is None:
+        _BAD_WORDS = retrieve_bad_words()
+
+    if not text.strip():
+        return False
+    if not any(char in _PUNCT for char in text):
+        return False
+
+    good = sum(char.isalnum() or char in _PUNCT or char.isspace() for char in text)
+    if good < 0.8 * len(text):
+        return False
+
+    lowered = text.lower()
+    tokens = set(_NON_ALNUM_SPLIT.split(lowered))
+    for bad in _BAD_WORDS:
+        # Multi-word entries can't be caught by token lookup, so match them as phrases.
+        if (bad in tokens) if " " not in bad else (bad in lowered):
+            return False
+    return True
