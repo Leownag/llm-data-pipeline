@@ -127,3 +127,36 @@ def heuristic_quality_filter(text: str) -> bool:
         if (bad in tokens) if " " not in bad else (bad in lowered):
             return False
     return True
+
+
+def deduplicate_texts(texts: list[str]) -> list[str]:
+    """Deduplicates text by removing duplicate sentences.
+    Args:
+        text (str): Text to deduplicate.
+    Returns:
+        str: Deduplicated text. Implemented a simple Jacard similarity based deduplication.
+    """
+    threshold = 0.6
+    kept, kept_shingles = [], []
+    index: Dict[str, Set[int]] = {}
+
+    for text in texts:
+        words = [w for w in _NON_ALNUM_SPLIT.split(text.lower()) if w]
+        shingles = {" ".join(words[i:i + 3]) for i in range(max(len(words) - 2, 1))}
+
+        candidates: Set[int] = set()
+        for shingle in shingles:
+            candidates |= index.get(shingle, set())
+
+        if any(
+            len(shingles & kept_shingles[i]) / len(shingles | kept_shingles[i]) >= threshold
+            for i in candidates
+        ):
+            continue
+
+        for shingle in shingles:
+            index.setdefault(shingle, set()).add(len(kept))
+        kept_shingles.append(shingles)
+        kept.append(text)
+
+    return kept
