@@ -1,0 +1,19 @@
+<html><head><title>Revenue</title>
+<style>.x{color:red}</style><script>var a=1;</script></head><body>
+<h1>Quarterly Revenue</h1>
+<img src="logo.png" alt="Acme Corp logo">
+<h2>By region</h2>
+<table>
+<tr><th>Region</th><th>Q1</th><th>Q2</th></tr>
+<tr><td>EMEA</td><td>1.2</td><td>1.9</td></tr>
+<tr><td>APAC</td><td>0.8</td><td>1.1</td></tr>
+</table>
+<p>Fetch it with <code>requests.get(url)</code>.</p>
+<pre><code>def total(rows):
+    s = 0
+    for r in rows:
+        s += r.amount
+    return s
+</code></pre>
+<!-- internal note -->
+</body></html>

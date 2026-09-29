@@ -1,0 +1,18 @@
+Revenue
+Quarterly Revenue
+
+By region
+
+Region	Q1	Q2
+
+EMEA	1.2	1.9
+
+APAC	0.8	1.1
+
+Fetch it with requests.get(url).
+
+def total(rows):
+s = 0
+for r in rows:
+s += r.amount
+return s

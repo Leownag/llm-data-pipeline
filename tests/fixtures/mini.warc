@@ -1,0 +1,60 @@
+WARC/1.0
+WARC-Type: response
+WARC-Record-ID: <urn:uuid:b568feb0-18c2-4e6c-bfab-a4bb4b645d93>
+WARC-Target-URI: http://example.com/plain
+WARC-Date: 2026-10-20T22:04:35Z
+WARC-Payload-Digest: sha1:JN2UCFZL2TZCGZQHGABWVBUGTMG6ROPH
+WARC-Block-Digest: sha1:F5YPUKHXXNYFMBAC7JYIE2VMUMUFROCY
+Content-Type: application/http; msgtype=response
+Content-Length: 137
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html><head><title>Plain</title></head><body><p>A short, readable sentence.</p></body></html>
+
+WARC/1.0
+WARC-Type: response
+WARC-Record-ID: <urn:uuid:6ef731cf-493a-46c3-9e58-e16bafeed654>
+WARC-Target-URI: http://example.com/charset
+WARC-Date: 2026-10-20T22:04:35Z
+WARC-Payload-Digest: sha1:LECKP2QWRBL7ZJJ7FZR4KFK6NGHXH3QJ
+WARC-Block-Digest: sha1:PWEZXBGJ2WMDBSHDZ5TOFZEG5ITEIZXR
+Content-Type: application/http; msgtype=response
+Content-Length: 134
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+
+<html><body><p>Has a charset, so read_warc_file skips it.</p></body></html>
+
+WARC/1.0
+WARC-Type: response
+WARC-Record-ID: <urn:uuid:26a13b54-f591-4e4a-a7ff-99a3fd2aaed8>
+WARC-Target-URI: http://example.com/photo.jpg
+WARC-Date: 2026-10-20T22:04:35Z
+WARC-Payload-Digest: sha1:JS7KENJYOP2SBZJN4NVIAXNMUWNWUONU
+WARC-Block-Digest: sha1:DIZWUGV6BYSUR3VNVJZY6ETO5LPKAZDA
+Content-Type: application/http; msgtype=response
+Content-Length: 66
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+
+ÿØÿànot-really-a-jpeg
+
+WARC/1.0
+WARC-Type: response
+WARC-Record-ID: <urn:uuid:a2515650-5c27-43f7-b9d6-5f9e5ceed8c8>
+WARC-Target-URI: http://example.com/pii
+WARC-Date: 2026-10-20T22:04:35Z
+WARC-Payload-Digest: sha1:I3S4EBKMM4UZBCXDPXMOQH6NSJ32342Q
+WARC-Block-Digest: sha1:M64YGNR7NLNODQR6RIG7QRROLPPC7JLB
+Content-Type: application/http; msgtype=response
+Content-Length: 131
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html><body><p>Call +1 425 555 1234 or quote SSN 123-45-6789, please.</p></body></html>
+
