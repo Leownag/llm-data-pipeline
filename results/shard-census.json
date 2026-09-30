@@ -1,0 +1,94 @@
+{
+  "shard": "data.warc",
+  "content_types": {
+    "record_types": {
+      "warcinfo": 1,
+      "request": 48572,
+      "response": 48572,
+      "metadata": 48572
+    },
+    "response_records": 48572,
+    "no_content_type": 24,
+    "text_html_star": 47839,
+    "exactly_text_html": 6368,
+    "distinct_content_types": 208,
+    "top_content_types": [
+      [
+        "text/html; charset=UTF-8",
+        21870
+      ],
+      [
+        "text/html; charset=utf-8",
+        12656
+      ],
+      [
+        "text/html",
+        6368
+      ],
+      [
+        "text/html;charset=UTF-8",
+        1930
+      ],
+      [
+        "text/html;charset=utf-8",
+        1132
+      ],
+      [
+        "text/html; charset=ISO-8859-1",
+        908
+      ],
+      [
+        "text/html; charset=windows-1251",
+        571
+      ],
+      [
+        "text/html; charset=iso-8859-1",
+        486
+      ]
+    ]
+  },
+  "pipeline": {
+    "records": 6368,
+    "elapsed_seconds": 258.9,
+    "tag_frequency": {
+      "table": [
+        3523,
+        55.3
+      ],
+      "th": [
+        654,
+        10.3
+      ],
+      "pre": [
+        99,
+        1.6
+      ],
+      "code": [
+        38,
+        0.6
+      ],
+      "select": [
+        1414,
+        22.2
+      ],
+      "img_alt": [
+        5350,
+        84.0
+      ],
+      "h1": [
+        3901,
+        61.3
+      ]
+    },
+    "mask_then_filter": {
+      "kept": 5476,
+      "deleted": 892,
+      "deleted_pct": 14.01
+    },
+    "filter_then_mask": {
+      "kept": 5507,
+      "deleted": 861,
+      "deleted_pct": 13.52
+    }
+  }
+}
